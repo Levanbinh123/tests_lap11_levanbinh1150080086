@@ -1,0 +1,32 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tests;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.*;
+import utils.DriverFactory;
+
+public class LoginTest {
+
+   WebDriver driver;
+
+   @BeforeMethod
+   public void setup() {
+       driver = DriverFactory.createDriver();
+       driver.get("https://www.google.com");
+   }
+
+   @Test
+   public void testTitle() {
+       String title = driver.getTitle();
+       Assert.assertTrue(title.contains("Google"));
+   }
+
+   @AfterMethod
+   public void tearDown() {
+       driver.quit();
+   }
+}
